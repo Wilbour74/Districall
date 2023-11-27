@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+    <h1>Liste des Articles</h1>
+
+    <a href="{{ path('app_logout') }}">Clique ici pour te deconnecter</a>
+
+    {{ form_start(form) }}
+    {{ form_row(form.user_id) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.content) }}
+    {{ form_row(form.created_at) }}
+    {{ form_row(form.image) }}
+    {{ form_end(form) }}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User ID</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Contenu</th>
+                <th>Date de création</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.id }}</td>
+                    
+                    <td>{{ article.name }}</td>
+                    <td>{{ article.description }}</td>
+                    <td>{{ article.content }}</td>
+  
+                    <td>
+                     {{article.image}}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
